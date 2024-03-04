@@ -30,9 +30,9 @@ Module.register('MMM-temphum', {
 
     Log.info('Starting module: ' + this.name);
 
-    this.loading = true;
-    this.inWindow = true;
-    this.isHidden = false;
+ //   this.loading = true;
+ //   this.inWindow = true;
+ //   this.isHidden = false;
 
     //start data poll
  //   this.getData();

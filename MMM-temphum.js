@@ -16,7 +16,7 @@ Module.register('MMM-temphum', {
 
   // Define required scripts.
   getScripts: function() {
-    return ["gauge.min.js", this.file("node_modules/gauge.min.js")];
+    return [this.file("node_modules/canvas-gauges/gauge.min.js")];
   },
   
   // Define required styles.

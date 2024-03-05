@@ -1,0 +1,36 @@
+const mqtt = require('mqtt')
+const fs = require('fs')
+
+
+const url = 'mqtts://s6886f56.ala.us-east-1.emqxsl.com' 
+var caFile = fs.readFileSync("myCAFile");
+
+// Create an MQTT client instance
+const options = {
+  // Clean session
+  clean: true,
+  connectTimeout: 4000,
+  // Authentication
+  clientId: 'emqx_mktest',
+  username: 'xxxxxxxxxx',
+  password: 'yyyyyyyyyy',
+  ca: [caFile]
+}
+const client  = mqtt.connect(url, options) ;
+
+client.on('connect', function () {
+  console.log('Connected')
+  // Subscribe to a topic
+  client.subscribe('home/temp', function (err) {
+    if (!err) {
+      console.log('Subscribed')
+    }
+  })
+})
+
+// Receive messages
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  client.end()
+})
